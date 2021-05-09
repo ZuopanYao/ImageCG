@@ -1,15 +1,14 @@
-# BasicKit
+# ImageCG
 
-MD5、Base64、数据缓存、app更新、app基本信息获取封装以及对Array、Dictionary、URL、String、基本数据类型等进行常用扩展，可运行在iOS、macOS上的基本库
+iOS 绘图(CoreGraphics)
 
-[![Platform](https://img.shields.io/cocoapods/p/BasicKit.svg?style=flat)](https://github.com/ZuopanYao/BasicKit)
-[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/BasicKit.svg)](https://cocoapods.org/pods/BasicKit)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Platform](https://img.shields.io/cocoapods/p/ImageCG.svg?style=flat)](https://github.com/ZuopanYao/ImageCG)
+[![Cocoapods Compatible](https://img.shields.io/cocoapods/v/ImageCG.svg)](https://cocoapods.org/pods/ImageCG)
 
 ## Requirements / 使用条件
 
-- iOS 10.0+ / Mac OS X 10.12+ 
-- Xcode 10.2+
+- iOS 11.0+  
+- Xcode 12.2+
 - Swift 5.0+
 
 
@@ -18,26 +17,53 @@ MD5、Base64、数据缓存、app更新、app基本信息获取封装以及对Ar
 ### CocoaPods
 
 ```
-pod 'BasicKit'
-```
-
-### Carthage
-
-```
-github "ZuopanYao/BasicKit" 
+pod 'ImageCG'
 ```
 
 ### Manually / 手动安装
 
-If you prefer not to use either of the aforementioned dependency managers, you can integrate SnapKit into your project manually.
+If you prefer not to use either of the aforementioned dependency managers, you can integrate ImageCG into your project manually.
 
-如果您不喜欢以上管理依赖库的方式，则可以手动将 BasicKit 集成到项目中。
+如果您不喜欢以上管理依赖库的方式，则可以手动将 ImageCG 集成到项目中。
 
 
 ## Usage / 使用
 
+### UIColor to UIImage
+
+```
+let image = UIColor.red.icg.image(CGSize(width: 200, height: 100))
+
+```
+
+###  UIImage add UIImage 在图片上添加图片
+
+```
+let baseImage = UIImage(named: "BaseImageName")!
+let logoImage = UIImage(named: "LogoImageName")!
+let image = baseImage.icg.add(logoImage)
+```
+
+### Linear Gradient 线性渐变
+
+```
+let colors = [UIColor.blue, UIColor.red, UIColor.yellow, ...]
+let image = colors.icg.linearGradient(CGSize(width: 200, height: 100), 
+direction: .diagonally)
+
+```
+
+### Radial Gradient 径向渐变
+
+```
+let colors = [UIColor.blue, UIColor.red, UIColor.yellow, ...]
+let image = colors.icg.radialGradient(CGSize(width: 200, height: 100), 
+direction: .diagonally)
+
+```
+
 ## License / 许可证
 
-BasicKit is released under the MIT license. See LICENSE for details.
+ImageCG is released under the MIT license. See LICENSE for details.
 
-BasicKit 是在 MIT 许可下发布的，有关详情请查看该许可证。
+ImageCG 是在 MIT 许可下发布的，有关详情请查看该许可证。
