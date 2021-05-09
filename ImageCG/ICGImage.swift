@@ -1,19 +1,19 @@
 //
-//  IKImage.swift
-//  ImageKit
+//  ICGImage.swift
+//  ImageCG
 //
 //  Created by Harvey on 2021/5/9.
 //
 
 import UIKit
 
-extension ImageKit where Base: UIImage {
+extension ImageCG where Base: UIImage {
     
     public enum Position {
         case center
     }
     
-    public func add(_ logoImage: UIImage, position: ImageKit.Position = .center) -> UIImage? {
+    public func add(_ logoImage: UIImage, position: ImageCG.Position = .center) -> UIImage? {
         return drawImage(size: base.size) { (context) in
             let x = (base.size.width - logoImage.size.width) / 2.0
             let y = (base.size.height - logoImage.size.height) / 2.0
@@ -23,7 +23,7 @@ extension ImageKit where Base: UIImage {
         }
     }
     
-    public func add(_ logoImageName: String, position: ImageKit.Position = .center) -> UIImage? {
+    public func add(_ logoImageName: String, position: ImageCG.Position = .center) -> UIImage? {
         return add(UIImage(named: logoImageName)!, position: position)
     }
 }

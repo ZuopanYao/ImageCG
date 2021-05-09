@@ -1,13 +1,13 @@
 //
-//  IKColor.swift
-//  ImageKit
+//  ICGColor.swift
+//  ImageCG
 //
 //  Created by Harvey on 2021/5/9.
 //
 
 import UIKit
 
-extension ImageKit where Base: UIColor {
+extension ImageCG where Base: UIColor {
     
     public func image(_ size: CGSize) -> UIImage? {
         return drawImage(size: size) { (context) in
@@ -17,7 +17,7 @@ extension ImageKit where Base: UIColor {
     }
 }
 
-extension ImageKit where Base == [UIColor] {
+extension ImageCG where Base == [UIColor] {
     
     public enum Direction {
         case horizontal

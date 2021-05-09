@@ -15,7 +15,7 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = "ImageKit"
+  spec.name         = "ImageCG"
   spec.version      = "{v}"
   spec.summary      = "iOS 绘图"
 
@@ -91,7 +91,7 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "ImageKit/*.{h,swift}"
+  spec.source_files  = "ImageCG/*.{h,swift}"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"

@@ -8,7 +8,7 @@ if [ -z "$1" ]; then
  exit 0
 fi
 
-MODULE='ImageKit'
+MODULE='ImageCG'
 SPECS='Specs'
 
 cp podspec.example $MODULE.podspec

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import ImageKit
+import ImageCG
 
 class ViewController: UIViewController {
 
@@ -19,13 +19,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        imageView1.image = UIColor.red.ik.image(.init(width: 200, height: 100))
-        imageView2.image = [UIColor.blue, UIColor.red, UIColor.yellow].ik.linearGradient(.init(width: 200, height: 100), direction: .diagonally)
-        imageView3.image = [UIColor.blue, UIColor.red, UIColor.yellow].ik.radialGradient(.init(width: 100, height: 100))
+        imageView1.image = UIColor.red.icg.image(.init(width: 200, height: 100))
+        imageView2.image = [UIColor.blue, UIColor.red, UIColor.yellow].icg.linearGradient(.init(width: 200, height: 100), direction: .diagonally)
+        imageView3.image = [UIColor.blue, UIColor.red, UIColor.yellow].icg.radialGradient(.init(width: 100, height: 100))
         
         let image = UIImage(named: "1")
         imageView4.contentMode = .scaleAspectFit
-        imageView4.image = image!.ik.add("2")
+        imageView4.image = image!.icg.add("2")
     }
 }
 
