@@ -34,17 +34,21 @@ extension ImageCG where Base == [UIColor] {
     }
     
     /// Linear Gradient
-    public func linearGradient(_ size: CGSize, locations: [CGFloat]? = nil, direction: Direction = .horizontal) -> UIImage? {
+    public func linearGradient(_ size: CGSize, cornerRadius: CGFloat? = nil, locations: [CGFloat]? = nil, direction: Direction = .horizontal) -> UIImage? {
         return drawImage(size: size) { (context) in
             let colors: [CGColor] = base.map { $0.cgColor }
             let gradient = CGGradient(colorsSpace: CGColorSpaceCreateDeviceRGB(),
                                       colors: colors as CFArray, locations: locations)!
             
+            if let cornerRadius = cornerRadius {
+                let path = UIBezierPath(roundedRect: .init(origin: .zero, size: size), cornerRadius: cornerRadius)
+                path.addClip()
+            }
+            
             context.drawLinearGradient(gradient,
                                        start: CGPoint(x: 0, y: 0),
                                        end: direction.point(size),
                                        options: .drawsBeforeStartLocation)
-            
         }
     }
     

@@ -35,7 +35,7 @@ extension UIImage: ImageCGCompatible { }
 
 func drawImage(size: CGSize, _ draw: ((CGContext) -> Void)) -> UIImage? {
     
-    UIGraphicsBeginImageContextWithOptions(size, true, UIScreen.main.scale)
+    UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
     guard let context  = UIGraphicsGetCurrentContext() else {
         UIGraphicsEndImageContext()
         return nil
