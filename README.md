@@ -36,6 +36,13 @@ let image = UIColor.red.icg.image(CGSize(width: 200, height: 100))
 
 ```
 
+### UIImage zoom
+
+```
+let newImage = myImage.icg.zoom(to: CGSize(width: 200, height: 100))
+
+```
+
 ###  UIImage add UIImage 在图片上添加图片
 
 ```
