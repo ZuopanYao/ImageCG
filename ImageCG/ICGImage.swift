@@ -26,4 +26,11 @@ extension ImageCG where Base: UIImage {
     public func add(_ logoImageName: String, position: ImageCG.Position = .center) -> UIImage? {
         return add(UIImage(named: logoImageName)!, position: position)
     }
+    
+    /// 缩放到指定大小
+    public func zoom(to size: CGSize) -> UIImage? {
+        return drawImage(size: size) { (context) in
+            context.draw(base.cgImage!, in: CGRect(origin: .zero, size: size))
+        }
+    }
 }
