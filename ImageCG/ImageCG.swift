@@ -34,16 +34,11 @@ extension Array: ImageCGCompatible { }
 extension UIImage: ImageCGCompatible { }
 
 func drawImage(size: CGSize, _ draw: ((CGContext) -> Void)) -> UIImage? {
-    
+    defer { UIGraphicsEndImageContext() }
     UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
     guard let context  = UIGraphicsGetCurrentContext() else {
-        UIGraphicsEndImageContext()
         return nil
     }
-    
     draw(context)
-    
-    let image = UIGraphicsGetImageFromCurrentImageContext()
-    UIGraphicsEndImageContext()
-    return image
+    return UIGraphicsGetImageFromCurrentImageContext()
 }
