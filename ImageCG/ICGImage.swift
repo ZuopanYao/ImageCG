@@ -40,6 +40,11 @@ extension ImageCG where Base: UIImage {
         guard let subImage = base.cgImage?.cropping(to: rect.pixel(base.scale)) else { return nil }
         return UIImage(cgImage: subImage, scale: base.scale, orientation: .up)
     }
+    
+    /// to UIColor
+    public var color: UIColor? {
+        UIColor(patternImage: base)
+    }
 }
 
 extension CGRect {

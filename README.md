@@ -33,14 +33,24 @@ If you prefer not to use either of the aforementioned dependency managers, you c
 
 ```
 let image = UIColor.red.icg.image(CGSize(width: 200, height: 100))
+```
 
+### UIImage to UIColor
+
+```
+let color = myImage.icg.color
 ```
 
 ### UIImage zoom
 
 ```
 let newImage = myImage.icg.zoom(to: CGSize(width: 200, height: 100))
+```
 
+### UIImage clip
+
+```
+let newImage = myImage.icg.clip(in: CGRect(origin: .init(x: 10, y: 30), size: .init(width: 200, height: 300)))
 ```
 
 ###  UIImage add UIImage 在图片上添加图片
@@ -57,7 +67,6 @@ let image = baseImage.icg.add(logoImage)
 let colors = [UIColor.blue, UIColor.red, UIColor.yellow, ...]
 let image = colors.icg.linearGradient(CGSize(width: 200, height: 100), 
 direction: .diagonally)
-
 ```
 
 ### Radial Gradient 径向渐变
@@ -66,7 +75,6 @@ direction: .diagonally)
 let colors = [UIColor.blue, UIColor.red, UIColor.yellow, ...]
 let image = colors.icg.radialGradient(CGSize(width: 200, height: 100), 
 direction: .diagonally)
-
 ```
 
 ## License / 许可证
