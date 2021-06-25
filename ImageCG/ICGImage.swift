@@ -46,34 +46,32 @@ extension ImageCG where Base: UIImage {
         UIColor(patternImage: base)
     }
     
-    
     /// 读取 PDF 并转为 UIImage
     /// - Parameters:
     ///   - filePath: PDF 路径
     ///   - isJoin: 是否进行拼接，ture = 拼接成一张图片，false = 一页一张图片
     ///   - color: 填充背景颜色
     /// - Returns: 数组 [UIImage]
-    public static func readPDF(from filePath: String, isJoin: Bool = true, fill color: UIColor = .white) -> [UIImage?] {
+    public static func readPDF(from filePath: String, isJoin: Bool = true, fill color: UIColor = .white) -> [UIImage] {
         let data = readPDF(from: filePath, fill: color)
         guard isJoin else { return data.0 }
         return [pdfJoin(from: data)]
     }
     
-    static func pdfJoin(from data: ([UIImage?], CGSize)) -> UIImage? {
+    static func pdfJoin(from data: ([UIImage], CGSize)) -> UIImage {
         return (drawImage(size: data.1, isOpaque: true) { (_) in
             var offsetY: CGFloat = 0.0
             for image in data.0 {
-                guard let image = image else { continue }
                 image.draw(in: CGRect(origin: .init(x: 0, y: offsetY), size: image.size))
                 offsetY += image.size.height
             }
-        })
+        })!
     }
     
-    static func readPDF(from filePath: String, fill color: UIColor = .white) -> ([UIImage?], CGSize) {
+    static func readPDF(from filePath: String, fill color: UIColor = .white) -> ([UIImage], CGSize) {
         guard let pdf = CGPDFDocument(URL(fileURLWithPath: filePath) as CFURL) else { return ([], .zero) }
         
-        var images: [UIImage?] = []
+        var images: [UIImage] = []
         let pageRect: CGRect = pdf.page(at: 1)!.getBoxRect(.mediaBox)
         
         _ = drawImage(size: pageRect.size, isOpaque: true, { (context) in
@@ -87,7 +85,7 @@ extension ImageCG where Base: UIImage {
                 context.scaleBy(x: 1.0, y: -1.0)
                 context.concatenate(pdfPage.getDrawingTransform(.mediaBox, rect: pageRect, rotate: 0, preserveAspectRatio: true))
                 context.drawPDFPage(pdfPage)
-                images.append(UIGraphicsGetImageFromCurrentImageContext())
+                images.append(UIGraphicsGetImageFromCurrentImageContext()!)
                 context.clear(pageRect)
                 context.restoreGState()
             }
