@@ -62,8 +62,11 @@ extension ImageCG where Base: UIImage {
         return (drawImage(size: data.1, isOpaque: true) { (_) in
             var offsetY: CGFloat = 0.0
             for image in data.0 {
-                image.draw(in: CGRect(origin: .init(x: 0, y: offsetY), size: image.size))
-                offsetY += image.size.height
+                let scale = image.size.width / UIScreen.main.bounds.width
+                let width = image.size.width / scale
+                let height = image.size.height / scale
+                image.draw(in: CGRect(origin: .init(x: 0, y: offsetY), size: .init(width: width, height: height)))
+                offsetY += height
             }
         })!
     }
@@ -91,7 +94,8 @@ extension ImageCG where Base: UIImage {
             }
         })
         
-        return (images, CGSize(width: pageRect.size.width, height: pageRect.size.height * CGFloat(pdf.numberOfPages)))
+        let scale = pageRect.size.width / UIScreen.main.bounds.width
+        return (images, CGSize(width: pageRect.size.width / scale, height: pageRect.size.height * CGFloat(pdf.numberOfPages) / scale))
     }
 }
 
