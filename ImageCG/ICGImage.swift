@@ -46,6 +46,17 @@ extension ImageCG where Base: UIImage {
         UIColor(patternImage: base)
     }
     
+    /// UIImage 并转为 PDF
+    /// - Parameters:
+    ///   - filePath: PDF 路径
+    public func savedPDF(to filePath: String) {
+        let rect = CGRect(origin: .zero, size: base.size)
+        UIGraphicsBeginPDFContextToFile(filePath, rect, nil)
+        UIGraphicsBeginPDFPage()
+        base.draw(in: rect)
+        UIGraphicsEndPDFContext()
+    }
+    
     /// 读取 PDF 并转为 UIImage
     /// - Parameters:
     ///   - filePath: PDF 路径
