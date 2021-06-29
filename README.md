@@ -1,6 +1,8 @@
 # ImageCG
 
-iOS 绘图(CoreGraphics)
+iOS CoreGraphics: UIImage's zoom and clip, linear Gradient, radial gradient, pdf to UIImage, UIImage to pdf...
+
+iOS 绘图: 图片缩放、叠加、裁剪，线性渐变，径向渐变，PDF 转图片，图片转 PDF ...
 
 [![Platform](https://img.shields.io/cocoapods/p/ImageCG.svg?style=flat)](https://github.com/ZuopanYao/ImageCG)
 [![Cocoapods Compatible](https://img.shields.io/cocoapods/v/ImageCG.svg)](https://cocoapods.org/pods/ImageCG)
