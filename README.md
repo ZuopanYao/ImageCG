@@ -53,6 +53,20 @@ let newImage = myImage.icg.zoom(to: CGSize(width: 200, height: 100))
 let newImage = myImage.icg.clip(in: CGRect(origin: .init(x: 10, y: 30), size: .init(width: 200, height: 300)))
 ```
 
+### PDF to UIImage
+
+```
+let pdfPath: String = "read/to/path/my.pdf"
+let images = UIImage.icg.readPDF(from: pdfPath, isJoin: false)
+```
+
+### UIImage to PDF
+
+```
+let myImage: UIImage = UIImage()
+myImage.icg.savedPDF(to: NSHomeDirectory() + "saved/to/path/my.pdf")
+```
+
 ###  UIImage add UIImage 在图片上添加图片
 
 ```
